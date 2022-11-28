@@ -1,6 +1,8 @@
 package stepDef;
 
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
@@ -40,7 +42,7 @@ public class BookingStepDef{
 		boolean depositpaid_bool = Boolean.parseBoolean(depositepaid);
 
 		cb_Payload.setFirstname(firstname);
-		cb_Payload.setLasttname(lastname);
+		cb_Payload.setLastname(lastname);
 		cb_Payload.setTotalprice(totalprice);
 		cb_Payload.setDepositpaid(depositpaid_bool);
 		bd.setCheckin(checkin);
@@ -89,7 +91,7 @@ public class BookingStepDef{
 					.when()
 					.post()
 					.then()
-					.assertThat().statusCode(200).log().all()
+					.assertThat().log().all()
 					.extract().response();
 			System.out.println(response.asString());
 			Thread.sleep(2000);
@@ -103,15 +105,13 @@ public class BookingStepDef{
 			response = RestAssured
 					.given()
 					.baseUri(URL)
-					.contentType(Constants.Content_Type_Value)
 					.accept(Constants.Accept_Value)
 					.when()
 					.get()
 					.then()
-					.assertThat().statusCode(200).log().all()
+					.assertThat().log().all()
 					.extract().response();
 			System.out.println(response.asString());
-			Thread.sleep(2000);
 		} catch (Exception e) {
 			e.getMessage();
 		}return response;
@@ -142,7 +142,6 @@ public class BookingStepDef{
 		.given()
 		.baseUri(oAuthEndPoint)
 		.contentType(Constants.Content_Type_Value)
-		.accept(Constants.Accept_Value)
 		.body(payload)
 		.when()
 		.post()
@@ -190,7 +189,7 @@ public class BookingStepDef{
 	public void hitGetBookingAPI(String URL)
 	{
 		String appended_ID_URL = URL+bookingId;
-		this.runGETAction(appended_ID_URL);
+		this.runGETAction(URL);
 	}
 	
 	@Given("Create a valid Update booking Payload using {string}, {string}, {int}, {string}, {string}, {string}, {string}")
@@ -231,5 +230,14 @@ public class BookingStepDef{
 	{
 		this.runGETAction(URL);
 	}
+	
+	@Then("^response at \"([^\"]*)\" is \"([^\"]*)\"$")
+
+	public void responseAtIs(String path, String value) throws Throwable {
+
+		assertThat(this.response.jsonPath().getString(path)).isEqualTo(value);
+
+	}
+
 	
 }

@@ -3,7 +3,7 @@ import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features= "features", tags= "@Payconiq_Regression",glue={"stepDef"})
+@CucumberOptions(features= "F:\\Git Repo\\Payconiq_Test_Framework\\regressiontesting\\src\\test\\resources\\features\\Assignment_Flow", tags= "@GetBooking",glue={"stepDef"})
 
 public class runner extends AbstractTestNGCucumberTests{
 	@Override

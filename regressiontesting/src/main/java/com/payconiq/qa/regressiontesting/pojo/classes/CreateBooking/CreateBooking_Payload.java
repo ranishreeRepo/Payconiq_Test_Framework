@@ -3,21 +3,23 @@ package com.payconiq.qa.regressiontesting.pojo.classes.CreateBooking;
 public class CreateBooking_Payload {
 	
 	public String firstname;
-	public String lasttname;
+	public String lastname;
 	public int totalprice;
 	public boolean depositpaid;
 	public BookingDates bookingdates;
+	public String additionalneeds;
+	
 	public String getFirstname() {
 		return firstname;
 	}
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-	public String getLasttname() {
-		return lasttname;
+	public String getLastname() {
+		return lastname;
 	}
-	public void setLasttname(String lasttname) {
-		this.lasttname = lasttname;
+	public void setLastname(String lasttname) {
+		this.lastname = lasttname;
 	}
 	public int getTotalprice() {
 		return totalprice;
@@ -43,7 +45,7 @@ public class CreateBooking_Payload {
 	public void setAdditionalneeds(String additionalneeds) {
 		this.additionalneeds = additionalneeds;
 	}
-	public String additionalneeds;
+	
 	
 
 }

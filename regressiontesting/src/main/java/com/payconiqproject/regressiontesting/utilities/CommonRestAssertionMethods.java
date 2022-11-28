@@ -16,13 +16,7 @@ public class CommonRestAssertionMethods {
 
 	}
 
-	@Then("^response code is (\\d+)$ <file://d+)$> ")
-
-	public void responseCodeIs(int code) throws Throwable {
-
-		this.getResponse().then().log().ifValidationFails().assertThat().statusCode(code);
-
-	}
+	
 
 
 
@@ -56,14 +50,7 @@ public class CommonRestAssertionMethods {
 
 
 
-	@Then("^response at \"([^\"]*)\" is \"([^\"]*)\"$")
-
-	public void responseAtIs(String path, String value) throws Throwable {
-
-		assertThat(this.getResponse().jsonPath().getString(path)).isEqualTo(value);
-
-	}
-
+	
 
 
 }
