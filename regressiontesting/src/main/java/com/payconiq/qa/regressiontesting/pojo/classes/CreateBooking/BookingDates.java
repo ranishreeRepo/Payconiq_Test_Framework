@@ -1,4 +1,4 @@
-package com.payconiqproject.regressiontesting.pojo.classes.CreateBooking;
+package com.payconiq.qa.regressiontesting.pojo.classes.CreateBooking;
 
 public class BookingDates {
 	public String checkin;
